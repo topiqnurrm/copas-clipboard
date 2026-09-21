@@ -49,10 +49,14 @@ export default function Home() {
   }
 
   async function handleDelete(id: string) {
+    const yakin = window.confirm("Yakin ingin menghapus teks ini?");
+    if (!yakin) return;
+
     try {
       await deleteDoc(doc(db, "clips", id));
     } catch (error) {
       console.error("Gagal menghapus:", error);
+      alert("Gagal menghapus, coba lagi.");
     }
   }
 
